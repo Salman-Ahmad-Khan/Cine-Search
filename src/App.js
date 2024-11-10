@@ -1,11 +1,11 @@
-
-
 import React, { useState, useEffect } from "react";
 import MovieCard from "./component/MovieCard";
+
 import SearchIcon from "./search.svg";
 import "./App.css";
 
-const API_URL = "http://www.omdbapi.com?apikey=93b92437";
+const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_KEY}`;
+
 const DEFAULT_SEARCH_TERM = "Pirates of the Caribbean";
 
 const App = () => {
@@ -13,26 +13,24 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
   const searchMovies = async (title) => {
-    const query = title.trim() || DEFAULT_SEARCH_TERM; 
+    const query = title.trim() || DEFAULT_SEARCH_TERM;
     try {
       const response = await fetch(`${API_URL}&s=${query}`);
       const data = await response.json();
-      setMovies(data.Search || []); 
+      setMovies(data.Search || []);
     } catch (error) {
       console.error("Failed to fetch movies", error);
       setMovies([]);
     }
   };
 
-
   useEffect(() => {
     searchMovies(DEFAULT_SEARCH_TERM);
   }, []);
 
- 
   useEffect(() => {
     if (searchTerm === "") {
-      searchMovies(DEFAULT_SEARCH_TERM); 
+      searchMovies(DEFAULT_SEARCH_TERM);
     }
   }, [searchTerm]);
 
@@ -77,7 +75,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-

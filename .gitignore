@@ -11,6 +11,11 @@
 # production
 /build
 
+# env files (can opt-in for commiting if needed)
+.env*.local
+.env
+
+
 # misc
 .DS_Store
 .env.local
