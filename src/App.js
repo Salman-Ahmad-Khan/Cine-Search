@@ -4,7 +4,7 @@ import MovieCard from "./component/MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 
-const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_KEY}`;
+const API_URL = `https://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_KEY}`;
 
 const DEFAULT_SEARCH_TERM = "Pirates of the Caribbean";
 
@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>MovieLand</h1>
+      <h1>Cine Search</h1>
       <p className="subline">Find Your Next Favorite Movie</p>
 
       <div className="search">
